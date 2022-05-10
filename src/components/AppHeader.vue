@@ -26,9 +26,7 @@ export default {
         }
     },
     computed: {
-        FilmsList(){
-            return store.state.FilmsList;
-        }
+
     },
     methods: {
         searchFilm(){
@@ -43,7 +41,6 @@ export default {
             .then(res => {
                 this.films = res.data.results;
                 store.setFilms(this.films);
-                console.log(this.films)
             })
             .catch(err => {
                 console.error(err); 
