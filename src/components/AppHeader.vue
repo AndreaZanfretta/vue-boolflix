@@ -19,10 +19,12 @@ export default {
     name: 'AppHeader',
     data(){
         return{
-            apiUrl: 'https://api.themoviedb.org/3/search/movie?api_key=e9c76fb91f859a24ed8811a6b98566a1&query=Jack+Reacher',
+            apiUrl: 'https://api.themoviedb.org/3/search/',
             apiKey: 'e9c76fb91f859a24ed8811a6b98566a1',
             searched: '',
             films: [],
+            tvSeries: [],
+            full: []
         }
     },
     computed: {
@@ -40,7 +42,18 @@ export default {
             axios.get(this.apiUrl + 'movie', paramObj)
             .then(res => {
                 this.films = res.data.results;
-                store.setFilms(this.films);
+                /* console.log(this.films) */
+                /* store.setFilms(this.films); */
+            })
+            .catch(err => {
+                console.error(err); 
+            })
+            axios.get(this.apiUrl + 'tv', paramObj)
+            .then(res => {
+                this.tvSeries = res.data.results;
+                this.full = this.films.concat(this.tvSeries);
+                console.log(this.full)
+                store.setFilms(this.full);
             })
             .catch(err => {
                 console.error(err); 
