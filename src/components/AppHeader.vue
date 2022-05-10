@@ -42,8 +42,6 @@ export default {
             axios.get(this.apiUrl + 'movie', paramObj)
             .then(res => {
                 this.films = res.data.results;
-                /* console.log(this.films) */
-                /* store.setFilms(this.films); */
             })
             .catch(err => {
                 console.error(err); 
@@ -52,7 +50,6 @@ export default {
             .then(res => {
                 this.tvSeries = res.data.results;
                 this.full = this.films.concat(this.tvSeries);
-                console.log(this.full)
                 store.setFilms(this.full);
             })
             .catch(err => {

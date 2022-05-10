@@ -2,6 +2,7 @@
     <div>
         <ul>
             <li v-for="(film, index) in setFilms" :key="index">
+            <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
             <p>Titolo: {{film.title}} {{film.name}}</p>
             <p>Titolo Originale: {{film.original_title}} {{film.original_name}}</p>
             <p>Lingue: {{film.original_language}}</p>
