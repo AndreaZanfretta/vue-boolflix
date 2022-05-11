@@ -1,7 +1,17 @@
 <template>
   <div id="app">
     <app-header />
-    <app-main />
+    <main>
+      <div class="film-section">
+        <h1>Film</h1>
+        <app-main />
+      </div>
+      <div class="tv-section">
+        <h1>Serie TV</h1>
+      </div>
+      
+    </main>
+    
   </div>
 </template>
 
@@ -20,7 +30,10 @@ export default {
 
 <style lang="scss">
 @import "./styles/generals";
-#app {
-
+@import "./styles/vars";
+main{
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: $main-bg;
 }
 </style>
