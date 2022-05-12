@@ -7,12 +7,18 @@
         <h1 v-else>Film della settimana</h1>
         <app-main v-if="loadState" :validate="searchFilm"/>
         <app-main v-else :validate="trendingFilms"/>
+        <div v-if="emptyfilm" class="empty">
+          <h2>Non ci sono titoli inerenti alla ricerca</h2>
+        </div>
       </div>
       <div class="tv-section">
         <h1 v-if="loadStateSeries">Serie TV</h1>
         <h1 v-else>Serie TV della settimana</h1>
         <app-main v-if="loadState" :validate="searchSeries"/>
         <app-main v-else :validate="trendingSeries"/>
+        <div v-if="emptyTv" class="empty">
+          <h2>Non ci sono titoli inerenti alla ricerca</h2>
+        </div>
       </div>
       
     </main>
@@ -52,6 +58,12 @@ export default {
     },
     loadStateSeries(){
       return store.state.loadedSeries;
+    },
+    emptyfilm(){
+      return store.state.emptyfilm
+    },
+    emptyTv(){
+      return store.state.emptytv
     }
   },
   methods: {
@@ -59,6 +71,7 @@ export default {
       const paramObj = {
           params: {
               api_key: this.apiKey,
+              language: 'it-IT'
           }
       }
       axios.get(this.apiUrl + 'movie/week', paramObj)
@@ -96,6 +109,17 @@ main{
 }
 h1{
   margin-left: 50px;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
+}
+.tv-section, .tv-section{
+  position: relative;
+}
+.empty{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   font-family: 'Bebas Neue', cursive;
 }

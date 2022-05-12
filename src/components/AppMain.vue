@@ -10,7 +10,7 @@
                     <p>{{film.overview}}</p>
                     <p>Lingue: {{film.original_language}} <img class="flags" v-if="['de', 'en', 'fr', 'it'].includes(film.original_language)" :src="require('../assets/flags/'+film.original_language+'.png')">
                     <img class="flags" v-else :src="require('../assets/flags/nd.png')" alt=""></p>
-                    <p>Generi: {{genres}}</p>
+                    <p>Generi:</p>
                     <span>
                     <i v-for="index in 5" :key="index" :class="index <= Math.round((Math.round(film.vote_average) / 2 ))? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
                     </span>

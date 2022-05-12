@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="container-header">
-            <h1>BoolFlix</h1>
+            <a href="#"><h1>BoolFlix</h1></a>
             <div class="input-group">
                 <input @keyup.enter="searchFilm" v-model="searched" type="text" class="form-control" placeholder="Cerca un film o serie tv" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
@@ -84,7 +84,9 @@ header{
             width: 20%;
             vertical-align: middle;
         }
-
+        a{
+            text-decoration: none;
+        }
         h1{
             color: $logo-font;
             font-family: 'Bebas Neue', cursive;
