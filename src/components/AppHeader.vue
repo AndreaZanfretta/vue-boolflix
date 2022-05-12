@@ -22,7 +22,9 @@ export default {
             apiUrl: 'https://api.themoviedb.org/3/search/',
             apiKey: 'e9c76fb91f859a24ed8811a6b98566a1',
             searched: '',
-            films_tvseries: [],
+            films: [],
+            tvSeries: [],
+            full: []
         }
     },
     computed: {
@@ -37,23 +39,22 @@ export default {
                     language: 'it-IT'
                 }
             }
-            axios.get(this.apiUrl + 'multi', paramObj)
+            axios.get(this.apiUrl + 'movie', paramObj)
             .then(res => {
-                this.films_tvseries = res.data.results;
-                store.setFilms(this.films_tvseries)
+                this.films = res.data.results;
+                store.setFilms(this.films)
             })
             .catch(err => {
                 console.error(err); 
             })
-            /* axios.get(this.apiUrl + 'tv', paramObj)
+            axios.get(this.apiUrl + 'tv', paramObj)
             .then(res => {
                 this.tvSeries = res.data.results;
-                this.full = this.films.concat(this.tvSeries);
-                store.setFilms(this.full);
+                store.setfull(this.tvSeries);
             })
             .catch(err => {
                 console.error(err); 
-            }) */
+            })
         }
     },
     mounted(){
@@ -86,6 +87,7 @@ header{
 
         h1{
             color: $logo-font;
+            font-family: 'Bebas Neue', cursive;
         }
 }
 
